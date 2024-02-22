@@ -1,13 +1,16 @@
-﻿Feature: GoogleSearch
+﻿@Regressions 
+Feature: GoogleSearch
 In order to get more business
 Tom (CEO) wants
 us to appear high in testing search results
 
+@Tag1 @Tag2
 Scenario: Search Google for Edgewords
 	Given I am on the Google homepage
 	When I Google for 'BBC'
 	Then 'Edgewords' is the top result
 
+@ignore @Tag2
 Scenario Outline: Search Google for stuff
 	Given i am on the Google homepage
 	When I search for '<searchTerm>'

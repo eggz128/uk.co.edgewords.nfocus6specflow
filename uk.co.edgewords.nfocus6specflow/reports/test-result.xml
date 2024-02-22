@@ -1,0 +1,77 @@
+<test-run id="2" duration="25.7839749" testcasecount="4" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:44Z" end-time="2024-02-22T 12:44:15Z">
+  <test-suite type="Assembly" name="uk.co.edgewords.nfocus6specflow.dll" fullname="C:\Users\StevePowell\source\repos\uk.co.edgewords.nfocus6specflow\uk.co.edgewords.nfocus6specflow\bin\Debug\net6.0\uk.co.edgewords.nfocus6specflow.dll" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+    <test-suite type="TestSuite" name="uk" fullname="uk" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+      <test-suite type="TestSuite" name="co" fullname="uk.co" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+        <test-suite type="TestSuite" name="edgewords" fullname="uk.co.edgewords" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+          <test-suite type="TestSuite" name="nfocus6specflow" fullname="uk.co.edgewords.nfocus6specflow" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+            <test-suite type="TestSuite" name="Features" fullname="uk.co.edgewords.nfocus6specflow.Features" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+              <test-suite type="TestFixture" name="GoogleSearchFeature" fullname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature" classname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature" total="4" passed="0" failed="1" inconclusive="0" skipped="3" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7839749">
+                <test-case name="SearchGoogleForEdgewords" fullname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.SearchGoogleForEdgewords" methodname="SearchGoogleForEdgewords" classname="GoogleSearchFeature" result="Failed" start-time="2024-02-22T 12:43:49Z" end-time="2024-02-22T 12:44:15Z" duration="25.7755249" asserts="0" seed="110554323">
+                  <properties>
+                    <property name="Category" value="Regressions" />
+                    <property name="Category" value="Tag1" />
+                    <property name="Category" value="Tag2" />
+                  </properties>
+                  <output><![CDATA[Given I am on the Google homepage
+-> done: GooGleStepsGeneratedByRunningTest.GivenIAmOnTheGoogleHomepage() (2.1s)
+When I Google for 'BBC'
+-> done: GooGleStepsGeneratedByRunningTest.WhenISearchForEdgewords("BBC") (0.5s)
+Then 'Edgewords' is the top result
+-> error:   Edgewords is not the top result
+  Expected: String containing "Edgewords"
+  But was:  "BBC - Home"
+ (9.4s)
+
+]]></output>
+                  <failure>
+                    <message>  Edgewords is not the top result
+  Expected: String containing "Edgewords"
+  But was:  "BBC - Home"
+</message>
+                    <stack-trace>   at uk.co.edgewords.nfocus6specflow.StepDefinitions.GooGleStepsGeneratedByRunningTest.ThenEdgewordsIsTheTopResult(String searchResult) in C:\Users\StevePowell\source\repos\uk.co.edgewords.nfocus6specflow\uk.co.edgewords.nfocus6specflow\StepDefinitions\GooGleStepsGeneratedByRunningTest.cs:line 52
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan&amp; duration)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+   at uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.ScenarioCleanup()
+   at uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.SearchGoogleForEdgewords() in C:\Users\StevePowell\source\repos\uk.co.edgewords.nfocus6specflow\uk.co.edgewords.nfocus6specflow\Features\GoogleSearch.feature:line 11
+
+1)    at uk.co.edgewords.nfocus6specflow.StepDefinitions.GooGleStepsGeneratedByRunningTest.ThenEdgewordsIsTheTopResult(String searchResult) in C:\Users\StevePowell\source\repos\uk.co.edgewords.nfocus6specflow\uk.co.edgewords.nfocus6specflow\StepDefinitions\GooGleStepsGeneratedByRunningTest.cs:line 52
+
+</stack-trace>
+                  </failure>
+                </test-case>
+                <test-case name="SearchGoogleForStuff(&quot;edgewords&quot;,&quot;Edgewords&quot;,null)" fullname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.SearchGoogleForStuff(&quot;edgewords&quot;,&quot;Edgewords&quot;,null)" methodname="SearchGoogleForStuff(&quot;edgewords&quot;,&quot;Edgewords&quot;,null)" classname="GoogleSearchFeature" result="Skipped" start-time="2024-02-22T 12:44:15Z" end-time="2024-02-22T 12:44:15Z" duration="0.001914" asserts="0" seed="2101814043">
+                  <properties>
+                    <property name="Category" value="Tag2" />
+                    <property name="Category" value="Regressions" />
+                  </properties>
+                  <output><![CDATA[OneTimeSetUp: Ignored scenario
+]]></output>
+                </test-case>
+                <test-case name="SearchGoogleForStuff(&quot;BBC&quot;,&quot;BBC&quot;,null)" fullname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.SearchGoogleForStuff(&quot;BBC&quot;,&quot;BBC&quot;,null)" methodname="SearchGoogleForStuff(&quot;BBC&quot;,&quot;BBC&quot;,null)" classname="GoogleSearchFeature" result="Skipped" start-time="2024-02-22T 12:44:15Z" end-time="2024-02-22T 12:44:15Z" duration="0.003179" asserts="0" seed="2073916993">
+                  <properties>
+                    <property name="Category" value="Tag2" />
+                    <property name="Category" value="Regressions" />
+                  </properties>
+                  <output><![CDATA[OneTimeSetUp: Ignored scenario
+]]></output>
+                </test-case>
+                <test-case name="SearchGoogleForStuff(&quot;News&quot;,&quot;BBC&quot;,null)" fullname="uk.co.edgewords.nfocus6specflow.Features.GoogleSearchFeature.SearchGoogleForStuff(&quot;News&quot;,&quot;BBC&quot;,null)" methodname="SearchGoogleForStuff(&quot;News&quot;,&quot;BBC&quot;,null)" classname="GoogleSearchFeature" result="Skipped" start-time="2024-02-22T 12:44:15Z" end-time="2024-02-22T 12:44:15Z" duration="0.003357" asserts="0" seed="90460986">
+                  <properties>
+                    <property name="Category" value="Tag2" />
+                    <property name="Category" value="Regressions" />
+                  </properties>
+                  <output><![CDATA[OneTimeSetUp: Ignored scenario
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <errors />
+  </test-suite>
+</test-run>
