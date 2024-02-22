@@ -8,20 +8,22 @@ using TechTalk.SpecFlow;
 namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
 {
     [Binding] //This annotation tells Specflow this file contains steps. The name of the file or it's location is not important.
-    public class StepDefinitions
+    public class GooGleStepsGeneratedByRunningTest
     {
         
         IWebDriver driver; //Field accessible to all methods in this class to share driver
 
         //Not important now, but ScenarioContext can be used to share data (e.g. a WebDriver) across methods, /and/ across step definition classes
         private readonly ScenarioContext _scenarioContext;
-        public StepDefinitions(ScenarioContext scenarioContext)
+        public GooGleStepsGeneratedByRunningTest(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }
 
 
-        [Given(@"I am on the Google homepage")]
+        [Given("I am on the Google homepage")]
+        [Given(@"i am on the Google homepage")] //Multiple annotations can be used to handle different phrasings for the same concrete steps
+        [Given(@"We are on (?i)Google(?-i) now")] //RegEx can be used to toggle case insensitivity
         public void GivenIAmOnTheGoogleHomepage()
         {
             //Skeleton code will throw a Pending exception when initially generated
@@ -33,13 +35,14 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
             driver.FindElement(By.CssSelector("#L2AGLb")).Click();
         }
 
-        [When(@"I search for '(.*)'")] //RegEx captures a paramitersied value
+        [StepDefinition(@"(?:I|i) (?:search|Google) for '(.*)'")] //RegEx ( ) captures a paramitersied value. (?: ) is a non capture group that will not be passed to the method
+        //[StepDefinition(@"I search for '{string}'")] //Cucumber Expression useable in Specflow4 (ReqnRoll) or Cucumber
         public void WhenISearchForEdgewords(string searchTerm) //ANd passes the captured value to the method to use
         {
             driver.FindElement(By.CssSelector("textarea[aria-label=Search]")).SendKeys(searchTerm + Keys.Enter);
         }
 
-        [Then(@"'(.*)' is the top result")] //Then is a validation/assertion point
+        [StepDefinition(@"'(.*)' is the top result")] //Then is a validation/assertion point
         public void ThenEdgewordsIsTheTopResult(string searchResult)
         {
             //Capture a value that can be used to check the previous steps have "worked"
