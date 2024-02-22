@@ -105,12 +105,17 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search Google for Automated Software Testing")]
-        public void SearchGoogleForAutomatedSoftwareTesting()
+        [NUnit.Framework.DescriptionAttribute("Search Google for stuff")]
+        [NUnit.Framework.TestCaseAttribute("edgewords", "Edgewords", null)]
+        [NUnit.Framework.TestCaseAttribute("BBC", "BBC", null)]
+        [NUnit.Framework.TestCaseAttribute("News", "BBC", null)]
+        public void SearchGoogleForStuff(string searchTerm, string expectedSearchResult, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search Google for Automated Software Testing", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("searchTerm", searchTerm);
+            argumentsOfScenario.Add("expectedSearchResult", expectedSearchResult);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search Google for stuff", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -125,7 +130,52 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("i am on the Google homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
- testRunner.Given("We are on gOoGLe Now", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When(string.Format("I search for \'{0}\'", searchTerm), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 14
+ testRunner.Then(string.Format("\'{0}\' is the top result", expectedSearchResult), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify edgewords title and desription in search results")]
+        public void VerifyEdgewordsTitleAndDesriptionInSearchResults()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify edgewords title and desription in search results", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 22
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 24
+ testRunner.Given("I am on the Google homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 26
+ testRunner.Given("I am on the Google homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 27
+ testRunner.When("I search for \'Edgewords\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "url",
+                            "title"});
+                table1.AddRow(new string[] {
+                            "https://www.edgewordstraining.co.uk",
+                            "Edgewords Training - Automated Software Testing Training"});
+                table1.AddRow(new string[] {
+                            "https://github.com > edgewords",
+                            "Edgewords Training edgewords"});
+#line 28
+ testRunner.Then("I should see in the results", ((string)(null)), table1, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

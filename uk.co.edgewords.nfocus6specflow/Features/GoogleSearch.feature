@@ -8,6 +8,25 @@ Scenario: Search Google for Edgewords
 	When I Google for 'BBC'
 	Then 'Edgewords' is the top result
 
-Scenario: Search Google for Automated Software Testing
+Scenario Outline: Search Google for stuff
 	Given i am on the Google homepage
-	Given We are on gOoGLe Now
+	When I search for '<searchTerm>'
+	Then '<expectedSearchResult>' is the top result
+
+Examples:
+	| searchTerm | expectedSearchResult |
+	| edgewords  | Edgewords            |
+	| BBC        | BBC                  |
+	| News       | BBC                  |
+
+Scenario: Verify edgewords title and desription in search results
+	
+	Given I am on the Google homepage
+	
+	Given I am on the Google homepage
+	When I search for 'Edgewords'
+	Then I should see in the results
+		| url                                 | title                                                    |
+		| https://www.edgewordstraining.co.uk | Edgewords Training - Automated Software Testing Training |
+		| https://github.com > edgewords      | Edgewords Training edgewords                             |
+		#Url actually uses the quote char › not greater than >

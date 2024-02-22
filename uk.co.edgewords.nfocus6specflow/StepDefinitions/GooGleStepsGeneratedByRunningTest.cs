@@ -4,14 +4,14 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
 using TechTalk.SpecFlow;
+using static uk.co.edgewords.nfocus6specflow.StepDefinitions.Hooks;
 
 namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
 {
     [Binding] //This annotation tells Specflow this file contains steps. The name of the file or it's location is not important.
-    public class GooGleStepsGeneratedByRunningTest
+    public class GooGleStepsGeneratedByRunningTest 
     {
-        
-        IWebDriver driver; //Field accessible to all methods in this class to share driver
+        //IWebDriver driver; //Field accessible to all methods in this class to share driver
 
         //Not important now, but ScenarioContext can be used to share data (e.g. a WebDriver) across methods, /and/ across step definition classes
         private readonly ScenarioContext _scenarioContext;
@@ -19,6 +19,7 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
         {
             _scenarioContext = scenarioContext;
         }
+
 
 
         [Given("I am on the Google homepage")]
@@ -29,7 +30,6 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
             //Skeleton code will throw a Pending exception when initially generated
             //This is essentially your "ToDo": complete the code that does the action specified in the Feature file.
             //_scenarioContext.Pending();
-            driver = new EdgeDriver();
             driver.Url = "https://www.google.co.uk";
             //Also need to accept cookies. Not directly specified in the Feature file, but a "technical implied" detail we can handle on the automation side.
             driver.FindElement(By.CssSelector("#L2AGLb")).Click();
@@ -52,6 +52,23 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
             Assert.That(topResult, Does.Contain(searchResult), searchResult + " is not the top result");
             //FluentAssertion style
             //topResult.Should().Contain(searchResult);
+        }
+
+        [Then(@"I should see in the results")]
+        public void ThenIShouldSeeInTheResults(Table table)
+        {
+            string searchResults = driver.FindElement(By.Id("rso")).Text;
+
+            foreach (var row in table.Rows)
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.That(searchResults, Does.Contain(row["url"]), "URL not found");
+                    //Assert.That(searchResults, Does.Contain(row[0]), "URL not found"); //Using column index
+                    Assert.That(searchResults, Does.Contain(row["title"]), "Title not found");
+                });
+
+            }
         }
 
     }
