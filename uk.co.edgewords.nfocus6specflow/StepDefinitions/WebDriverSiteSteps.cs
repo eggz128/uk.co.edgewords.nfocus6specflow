@@ -3,6 +3,7 @@ using System;
 using TechTalk.SpecFlow;
 using uk.co.edgewords.nfocus6specflow.Support.POMClasses;
 using NUnit.Framework;
+using uk.co.edgewords.nfocus6specflow.Support;
 
 namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
 {
@@ -11,11 +12,13 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
         private IWebDriver _driver;
+        private readonly WDWrapper _wrapper;
 
-        public WebDriverSiteSteps(ScenarioContext scenarioContext)
+        public WebDriverSiteSteps(ScenarioContext scenarioContext, WDWrapper wrapper)
         {
             _scenarioContext = scenarioContext;
-            this._driver = (IWebDriver)_scenarioContext["myDriver"];
+            //this._driver = (IWebDriver)_scenarioContext["myDriver"];
+            this._driver = wrapper.Driver; //Get the driver back from the passed wrapper object. No casting needed - it can only ever contain a IWebDriver.
         }
         [Given(@"I am on the login page")]
         public void GivenIAmOnTheLoginPage()

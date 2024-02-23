@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
 using TechTalk.SpecFlow;
+using uk.co.edgewords.nfocus6specflow.Support;
 //using static uk.co.edgewords.nfocus6specflow.StepDefinitions.Hooks;
 
 namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
@@ -15,10 +16,12 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
 
         //Not important now, but ScenarioContext can be used to share data (e.g. a WebDriver) across methods, /and/ across step definition classes
         private readonly ScenarioContext _scenarioContext;
-        public GooGleStepsGeneratedByRunningTest(ScenarioContext scenarioContext)
+        private readonly WDWrapper _wrapper;
+        public GooGleStepsGeneratedByRunningTest(ScenarioContext scenarioContext, WDWrapper wrapper)
         {
             _scenarioContext = scenarioContext;
-            this.driver = (IWebDriver)_scenarioContext["myDriver"]; //Must cast the plain object that is in scenario context back to the appropriate type manually
+            //this.driver = (IWebDriver)_scenarioContext["myDriver"]; //Must cast the plain object that is in scenario context back to the appropriate type manually
+            this.driver = wrapper.Driver; //Get the driver back from the passed wrapper object. No casting needed - it can only ever contain a IWebDriver.
         }
 
 
