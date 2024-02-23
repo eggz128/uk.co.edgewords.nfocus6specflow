@@ -1,6 +1,8 @@
 //Class generated with Specflow extension
 //Does not include ScenarioContext by default for sharing state between steps
 
+using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 using System;
 using TechTalk.SpecFlow;
 
@@ -9,23 +11,26 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
     //[Binding]
     public class GoogleSearchStepDefinitions
     {
-        private readonly ScenarioContext _scenarioContext;
+        IWebDriver driver;
 
-        public GoogleSearchStepDefinitions(ScenarioContext sc)
+        private readonly ScenarioContext _scenarioContext;
+        public GoogleSearchStepDefinitions(ScenarioContext scenarioContext)
         {
-            _scenarioContext = sc;
+            _scenarioContext = scenarioContext;
         }
 
         [Given(@"I am on the Google homepage")]
         public void GivenIAmOnTheGoogleHomepage()
         {
-            throw new PendingStepException();
+            driver = new EdgeDriver();
+            driver.Url = "https://www.google.com/";
+
         }
 
         [When(@"I search for Edgewords")]
         public void WhenISearchForEdgewords()
         {
-            throw new PendingStepException();
+            driver.Quit();
         }
 
         [Then(@"Edgewords is the top result")]

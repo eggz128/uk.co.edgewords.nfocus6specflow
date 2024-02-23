@@ -112,7 +112,6 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search Google for stuff")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("Tag2")]
         [NUnit.Framework.TestCaseAttribute("edgewords", "Edgewords", null)]
         [NUnit.Framework.TestCaseAttribute("BBC", "BBC", null)]
@@ -120,7 +119,6 @@ this.ScenarioInitialize(scenarioInfo);
         public void SearchGoogleForStuff(string searchTerm, string expectedSearchResult, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "ignore",
                     "Tag2"};
             if ((exampleTags != null))
             {

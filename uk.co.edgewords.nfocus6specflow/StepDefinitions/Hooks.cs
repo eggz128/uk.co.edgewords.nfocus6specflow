@@ -11,20 +11,25 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
     [Binding]
     public class Hooks
     {
-        public static IWebDriver driver; //Hackish way to share the browser with other classes
-
+        private IWebDriver _driver; //Hackish way to share the browser with other classes
+        private readonly ScenarioContext _scenarioContext;
+        public Hooks(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
         [Before]
         public void SetUp()
         {
-            driver = new EdgeDriver();
-            
+            _driver = new EdgeDriver();
+            _scenarioContext["myDriver"] = _driver; //When putting stuff in to scenario context we lose the type information
+            //_scenarioContext["myDriver"] = "This is not an IWebDriver it's a string";
         }
 
         [After]
         public void TearDown()
         {
             Thread.Sleep(3000);
-            driver.Quit();
+            _driver.Quit();
         }
     }
 }

@@ -10,7 +10,7 @@ Scenario: Search Google for Edgewords
 	When I Google for 'BBC'
 	Then 'Edgewords' is the top result
 
-@ignore @Tag2
+@Tag2
 Scenario Outline: Search Google for stuff
 	Given i am on the Google homepage
 	When I search for '<searchTerm>'

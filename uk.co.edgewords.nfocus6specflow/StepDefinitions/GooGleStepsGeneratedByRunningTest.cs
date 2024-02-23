@@ -4,20 +4,21 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using System;
 using TechTalk.SpecFlow;
-using static uk.co.edgewords.nfocus6specflow.StepDefinitions.Hooks;
+//using static uk.co.edgewords.nfocus6specflow.StepDefinitions.Hooks;
 
 namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
 {
     [Binding] //This annotation tells Specflow this file contains steps. The name of the file or it's location is not important.
     public class GooGleStepsGeneratedByRunningTest 
     {
-        //IWebDriver driver; //Field accessible to all methods in this class to share driver
+        private IWebDriver driver; //Field accessible to all methods in this class to share driver
 
         //Not important now, but ScenarioContext can be used to share data (e.g. a WebDriver) across methods, /and/ across step definition classes
         private readonly ScenarioContext _scenarioContext;
         public GooGleStepsGeneratedByRunningTest(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            this.driver = (IWebDriver)_scenarioContext["myDriver"]; //Must cast the plain object that is in scenario context back to the appropriate type manually
         }
 
 
@@ -33,14 +34,12 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
             driver.Url = "https://www.google.co.uk";
             //Also need to accept cookies. Not directly specified in the Feature file, but a "technical implied" detail we can handle on the automation side.
             driver.FindElement(By.CssSelector("#L2AGLb")).Click();
-        }
 
-        [StepDefinition(@"(?:I|i) (?:search|Google) for '(.*)'")] //RegEx ( ) captures a paramitersied value. (?: ) is a non capture group that will not be passed to the method
-        //[StepDefinition(@"I search for '{string}'")] //Cucumber Expression useable in Specflow4 (ReqnRoll) or Cucumber
-        public void WhenISearchForEdgewords(string searchTerm) //ANd passes the captured value to the method to use
-        {
-            driver.FindElement(By.CssSelector("textarea[aria-label=Search]")).SendKeys(searchTerm + Keys.Enter);
+            someCapturedValue = driver.FindElement(By.TagName("Body")).Text;
+            _scenarioContext["someValueToBePassedAround"] = someCapturedValue;
         }
+        private string someCapturedValue;
+
 
         [StepDefinition(@"'(.*)' is the top result")] //Then is a validation/assertion point
         public void ThenEdgewordsIsTheTopResult(string searchResult)
@@ -57,6 +56,7 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
         [Then(@"I should see in the results")]
         public void ThenIShouldSeeInTheResults(Table table)
         {
+            
             string searchResults = driver.FindElement(By.Id("rso")).Text;
 
             foreach (var row in table.Rows)
