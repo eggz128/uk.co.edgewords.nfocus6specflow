@@ -80,11 +80,13 @@ namespace uk.co.edgewords.nfocus6specflow.Features
         [NUnit.Framework.DescriptionAttribute("Search Google for Edgewords")]
         [NUnit.Framework.CategoryAttribute("Tag1")]
         [NUnit.Framework.CategoryAttribute("Tag2")]
+        [NUnit.Framework.CategoryAttribute("GUI")]
         public void SearchGoogleForEdgewords()
         {
             string[] tagsOfScenario = new string[] {
                     "Tag1",
-                    "Tag2"};
+                    "Tag2",
+                    "GUI"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search Google for Edgewords", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8

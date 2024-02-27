@@ -32,7 +32,7 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
         //    _scenarioContext["myDriver"] = _driver; //When putting stuff in to scenario context we lose the type information
         //    //_scenarioContext["myDriver"] = "This is not an IWebDriver it's a string";
         //}
-        [Before]
+        [Before("@GUI")] //Hooks can be made specific to certain tags
         public void SetUpUsingTypeSafeWrapper()
         {
             _driver = new EdgeDriver();
@@ -40,7 +40,7 @@ namespace uk.co.edgewords.nfocus6specflow.StepDefinitions
             //_wrapper.Driver = "CanWePutAStringInNoItsACompileTimeError";
         }
 
-        [After]
+        [After("@GUI")]
         public void TearDown()
         {
             Thread.Sleep(3000);

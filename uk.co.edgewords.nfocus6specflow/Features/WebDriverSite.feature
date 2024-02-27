@@ -1,4 +1,5 @@
-﻿Feature: WebDriverSite
+﻿@GUI
+Feature: WebDriverSite
 
 A short summary of the feature
 

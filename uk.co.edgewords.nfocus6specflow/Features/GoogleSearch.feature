@@ -4,7 +4,7 @@ In order to get more business
 Tom (CEO) wants
 us to appear high in testing search results
 
-@Tag1 @Tag2
+@Tag1 @Tag2 @GUI
 Scenario: Search Google for Edgewords
 	Given I am on the Google homepage
 	When I Google for 'BBC'
